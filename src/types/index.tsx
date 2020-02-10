@@ -3,4 +3,5 @@ export type Navigation = {
 }
 export type NavProps = {
   navigation: Navigation
+  store?: any
 }

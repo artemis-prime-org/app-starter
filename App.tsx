@@ -2,12 +2,14 @@
 
 import React from 'react'
 import { StatusBar } from 'react-native'
+import { Provider as MobxProvider } from 'mobx-react'
 
 import { Provider as PaperProvider } from 'react-native-paper'
 import { Asset } from 'expo-asset'
 import { AppLoading } from 'expo'
 
 import Router from './src/screens/Routes'
+import stores from './src/stores'
 import theme from './src/style/theme'
 
 export default class App extends React.Component {
@@ -28,10 +30,12 @@ export default class App extends React.Component {
     }
 
     return ( 
-      <PaperProvider theme={theme}>
-        <StatusBar translucent='true' barStyle="light-content" />
-        <Router /> 
-      </PaperProvider>
+      <MobxProvider store={stores}>
+        <PaperProvider theme={theme}>
+          <StatusBar translucent='true' barStyle="light-content" />
+          <Router /> 
+        </PaperProvider>
+      </MobxProvider>
     )
   }
 
