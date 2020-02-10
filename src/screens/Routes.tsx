@@ -18,7 +18,7 @@ const Stack = createStackNavigator()
 
 const Navigator = () => (
   <Stack.Navigator
-    initialRouteName="Dashboard"
+    initialRouteName="AuthScreen"
     headerMode='screen'
     screenOptions={{
       headerBackTitleVisible: false,

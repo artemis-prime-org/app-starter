@@ -85,9 +85,6 @@ export default inject('store')(observer(({ navigation, store }: NavProps) => {
     currentArray.push(store.movieStore.movies[i])
   }
 
-  //console.log(JSON.stringify(setsOfThree))
-
-
   return (
     <Portal >
     <ScrollView contentContainerStyle={s.inner}>
