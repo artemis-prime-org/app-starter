@@ -96,6 +96,7 @@ const s = StyleSheet.create({
   link: {
     fontWeight: 'bold',
     color: theme.colors.primary,
+    paddingLeft: 4
   },
 })
 
