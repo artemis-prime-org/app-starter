@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { 
-  TouchableOpacity, 
   StyleSheet, 
   Text, 
   View,
@@ -10,6 +9,7 @@ import {
 import { 
   Button, 
   TextInput, 
+  TextLink
 } from '../components'
 
 import theme from '../style/theme'
@@ -82,9 +82,7 @@ export default ({ navigation }: NavProps) => {
 
       <View style={s.row}>
         <Text style={s.label}>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-          <Text style={s.link}>Login</Text>
-        </TouchableOpacity>
+        <TextLink onPress={() => navigation.navigate('LoginScreen')} textStyle={s.link} >Login</TextLink>
       </View>
     </KeyboardAvoidingView>
   )

@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 
 import { 
-  Text, 
   StyleSheet, 
-  TouchableOpacity,
   KeyboardAvoidingView
  } from 'react-native'
 
 import { 
   Button, 
   TextInput, 
+  TextLink, 
 } from '../components'
 
 import theme from '../style/theme'
@@ -44,17 +43,8 @@ export default ({ navigation }: NavProps) => {
         textContentType="emailAddress"
         keyboardType="email-address"
       />
-
-      <Button mode="contained" onPress={_onSendPressed} style={s.button}>
-        Send Reset Instructions
-      </Button>
-
-      <TouchableOpacity
-        style={s.back}
-        onPress={() => navigation.navigate('LoginScreen')}
-      >
-        <Text style={s.label}>← Back to login</Text>
-      </TouchableOpacity>
+      <Button mode="contained" onPress={_onSendPressed} style={s.button}>Send Reset Instructions</Button>
+      <TextLink onPress={() => navigation.navigate('LoginScreen')} textStyle={s.label} outerStyle={s.back}>← Back to login</TextLink>
     </KeyboardAvoidingView>
   );
 };

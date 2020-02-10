@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { 
-  TouchableOpacity, 
   StyleSheet, 
   Text, 
   View,
@@ -8,9 +7,9 @@ import {
 } from 'react-native'
 
 import { 
-  Header, 
   Button, 
   TextInput, 
+  TextLink, 
   Logo
 } from '../components'
 
@@ -50,7 +49,6 @@ export default ({ navigation }: NavProps) => {
         autoCompleteType="email"
         textContentType="emailAddress"
         keyboardType="email-address"
-        //style={s.input}
       />
 
       <TextInput
@@ -61,24 +59,14 @@ export default ({ navigation }: NavProps) => {
         error={!!password.error}
         errorText={password.error}
         secureTextEntry
-        //style={s.input}
       />
       <View style={s.forgotPassword}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('ForgotPasswordScreen')}
-        >
-          <Text style={s.label}>Forgot your password?</Text>
-        </TouchableOpacity>
+        <TextLink onPress={() => navigation.navigate('ForgotPasswordScreen')} textStyle={s.label}>Forgot your password?</TextLink>
       </View>
-      <Button mode="contained" onPress={_onLoginPressed}>
-        Login
-      </Button>
-
+      <Button mode="contained" onPress={_onLoginPressed}>Login</Button>
       <View style={s.row}>
-        <Text style={s.label}>Don’t have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
-          <Text style={s.link}>Sign up</Text>
-        </TouchableOpacity>
+        <Text style={s.label}>Don’t have an account?</Text>
+        <TextLink onPress={() => navigation.navigate('RegisterScreen')} textStyle={s.link}>Sign up</TextLink>
       </View>
     </KeyboardAvoidingView>
   )
