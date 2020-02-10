@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, Image } from 'react-native'
 import { Provider as MobxProvider } from 'mobx-react'
 
 import { Provider as PaperProvider } from 'react-native-paper'
@@ -40,17 +40,25 @@ export default class App extends React.Component {
   }
 
   async _cacheResourcesAsync() {
-    const images = [
+    let images = [
       require('./assets/collage.png'),
-      //require('./assets/esx-logo.svg'),
       require('./assets/esx-splash.png')
     ]
-
-//    library.add(faChevronLeft)
-
-    const cacheImages = images.map(image => {
-      return Asset.fromModule(image).downloadAsync()
+    stores.movieStore.movies.map(movie => {
+      images.push(movie.posterImg)
     }) 
-    return Promise.all(cacheImages)
+    
+    const imagesCached = cacheImages(images)
+    await Promise.all(imagesCached)
   }
 }
+
+const cacheImages = (images) => {
+  return images.map(image => {
+    if (typeof image === 'string') {
+      return Image.prefetch(image)
+    } 
+      return Asset.fromModule(image).downloadAsync()
+  })
+}
+

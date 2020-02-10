@@ -1,3 +1,4 @@
+export { default as AsyncImage } from './AsyncImage'
 export { default as Button } from './Button'
 export { default as Logo } from './Logo'
 export { default as Paragraph } from './Paragraph'

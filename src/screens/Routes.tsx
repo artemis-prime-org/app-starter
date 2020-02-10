@@ -18,7 +18,7 @@ const Stack = createStackNavigator()
 
 const Navigator = () => (
   <Stack.Navigator
-    initialRouteName="Auth"
+    initialRouteName="Dashboard"
     headerMode='screen'
     screenOptions={{
       headerBackTitleVisible: false,
@@ -30,7 +30,7 @@ const Navigator = () => (
     <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login' }} />
     <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ title: 'Register' }} />
     <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} options={{ title: 'Forgot Password ' }} />
-    <Stack.Screen name="Dashboard" component={Dashboard} />
+    <Stack.Screen name="Dashboard" component={Dashboard} options={{ title: 'Browse Titles ' }}  />
   </Stack.Navigator>
 )
   // :aa TODO ... this is a hack to pass the Paper theme in, but it sets a few good defaults... we should create a proper translation layer
