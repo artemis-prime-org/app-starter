@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { 
-  Logo, 
   Header, 
   Button, 
   Paragraph, 
@@ -11,7 +10,6 @@ import { NavProps } from '../types'
 
 export default ({ navigation }: NavProps) => (
   <>
-    <Logo />
     <Header>Let’s start</Header>
     <Paragraph>
       Your amazing app starts here. Open you favourite code editor and start

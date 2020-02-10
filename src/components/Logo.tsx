@@ -2,18 +2,22 @@ import React from 'react'
 import { Image, StyleSheet } from 'react-native'
 
 
-const img = require('../../assets/esx-logo.svg')
+import Foo from '../../assets/esx-logo.svg'
+//const img = require('../../assets/splash.png')
 
 export default () => (
-  <Image source={img} style={styles.image} />
-);
+  <Foo width={346} height={200} />
+)
 
-const styles = StyleSheet.create({
+/*
+const myStyles = StyleSheet.create({
     // ratio 890 / 515 from svg source
   image: {
     width: 346,
     height: 200,
     marginBottom: 12,
+    zIndex: 100
+    
   },
 })
-
+*/

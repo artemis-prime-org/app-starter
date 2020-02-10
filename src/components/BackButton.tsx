@@ -1,13 +1,12 @@
 import React from 'react'
 import { 
   TouchableOpacity, 
-  Image, 
   StyleSheet 
 } from 'react-native'
 
-import { getStatusBarHeight } from 'react-native-status-bar-height'
+import { Entypo } from '@expo/vector-icons'
 
-const backArrow = require('../../assets/icon.png') // temp
+import { getStatusBarHeight } from 'react-native-status-bar-height'
 
 type Props = {
   goBack: () => void
@@ -15,7 +14,7 @@ type Props = {
 
 export default ({ goBack }: Props) => (
   <TouchableOpacity onPress={goBack} style={styles.container}>
-    <Image style={styles.image} source={backArrow} />
+    <Entypo name='chevron-left' size={32} />
   </TouchableOpacity>
 )
 
@@ -23,14 +22,12 @@ const styles = StyleSheet.create({
 
   container: {
     position: 'absolute',
-    top: 10 + getStatusBarHeight(),
-    left: 10,
+    top: 4 + getStatusBarHeight(),
+    left: 4,
+    zIndex: 100,
+    width: 32,
+    height: 32,
   },
 
-  image: {
-    width: 24,
-    height: 24,
-  },
   
 })
-

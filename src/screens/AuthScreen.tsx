@@ -2,9 +2,10 @@ import React from 'react'
 import {
   ImageBackground,
   StyleSheet,
+  Text
 } from 'react-native'
 
-import { Logo, Button } from '../components'
+import { Button } from '../components'
 import { NavProps } from '../types'
 
 const bgImage = require('../../assets/collage.png')
@@ -14,7 +15,6 @@ export default ({ navigation }: NavProps) => (
     source={bgImage}
     style={styles.background}
   >
-    <Logo />
     <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
       Login
     </Button>

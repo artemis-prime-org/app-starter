@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Entertainment Stock Exchange",
+    "name": "Entertainment Stock Exchange Demo App",
     "slug": "esx",
     "privacy": "public",
-    "sdkVersion": "35.0.0",
+    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
@@ -24,7 +24,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "userInterfaceStyle": "light"
+    },
+    "android": {
+      "userInterfaceStyle": "light"
+    },
+    "description": "",
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": ["js", "jsx", "ts", "tsx", "svg"]
     }
   }
 }

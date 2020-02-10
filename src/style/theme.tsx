@@ -1,11 +1,12 @@
-import { DefaultTheme } from 'react-native-paper'
+import { DarkTheme } from 'react-native-paper'
 
 export default {
-  ...DefaultTheme,
+  ...DarkTheme,
   colors: {
-    ...DefaultTheme.colors,
+    ...DarkTheme.colors,
     primary: '#600EE6',
     secondary: '#414757',
     error: '#f13a59',
   },
 }
+

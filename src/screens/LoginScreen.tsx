@@ -7,11 +7,9 @@ import {
 } from 'react-native'
 
 import { 
-  Logo, 
   Header, 
   Button, 
   TextInput, 
-  BackButton, 
 } from '../components'
 
 import theme from '../style/theme'
@@ -38,8 +36,6 @@ export default ({ navigation }: NavProps) => {
 
   return (
     <>
-      <BackButton goBack={() => navigation.navigate('HomeScreen')} />
-      <Logo />
       <Header>Welcome back.</Header>
       <TextInput
         label="Email"
@@ -66,7 +62,7 @@ export default ({ navigation }: NavProps) => {
       {/*
       <View style={styles.forgotPassword}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('ForgotPasswordScreen')}
+        onPress={() => navigation.navigate('ForgotPassword')}
       >
         <Text style={styles.label}>Forgot your password?</Text>
       </TouchableOpacity>

@@ -7,11 +7,9 @@ import {
 } from 'react-native'
 
 import { 
-  Logo, 
   Header, 
   Button, 
   TextInput, 
-  BackButton, 
 } from '../components'
 
 import theme from '../style/theme'
@@ -46,12 +44,7 @@ export default ({ navigation }: NavProps) => {
 
   return (
     <>
-      <BackButton goBack={() => navigation.navigate('HomeScreen')} />
-
-      <Logo />
-
       <Header>Create Account</Header>
-
       <TextInput
         label="Name"
         returnKeyType="next"
