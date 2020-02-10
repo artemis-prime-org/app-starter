@@ -1,18 +1,28 @@
 import React, { useState } from 'react'
 import { inject, observer } from 'mobx-react'
 
-import { Image, View, StyleSheet, FlatList, ScrollView, Text, TouchableOpacity } from 'react-native'
+import { 
+  Image, 
+  View, 
+  StyleSheet, 
+  ScrollView, 
+  Text, 
+  TouchableOpacity 
+} from 'react-native'
+
 import {
-  Card,
-  Title,
   Modal, 
-  Portal
+  Portal,
+  Button
+
 } from 'react-native-paper'
 
-//import { FlatGrid } from 'react-native-super-grid'
-import { Col, Row, Grid } from "react-native-easy-grid"
+import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-import { Paragraph, AsyncImage } from '../components'
+
+import { Row, Grid } from "react-native-easy-grid"
+
+import { Paragraph } from '../components'
 import { NavProps } from '../types'
 import theme from '../style/theme'
 
@@ -62,7 +72,7 @@ export default inject('store')(observer(({ navigation, store }: NavProps) => {
  
 export default inject('store')(observer(({ navigation, store }: NavProps) => {
 
-  const [modalVisible, setModalVisible] = useState(false)
+  const [activeMovie, setActiveMovie] = useState(null)
 
 
   let setsOfThree = []
@@ -85,18 +95,41 @@ export default inject('store')(observer(({ navigation, store }: NavProps) => {
       {setsOfThree.map((three, i) => (
         <Row key={i} style={s.row}>
         {three.map((m, j) => (
-          <MovieCard onPress={() => setModalVisible(true)} movie={m} outerStyle={s.outerStyle} key={j}/>
+          <MovieCard onPress={() => setActiveMovie(m)} movie={m} outerStyle={s.outerStyle} key={j}/>
         ))}
         </Row>
       ))}
       </Grid>
     </ScrollView>
-      <Modal visible={modalVisible} onDismiss={() => setModalVisible(false)} contentContainerStyle={s.modalStyle}>
-        <Text>test</Text>
+      <Modal visible={activeMovie != null} onDismiss={() => setActiveMovie(null)} contentContainerStyle={s.modalStyle}>
+        {activeMovie && (
+          <>
+            <Image source={{uri: activeMovie.heroImg}} style={{width: 'auto', height: 150}}/>
+            <Text style={s.detailTitle} >{activeMovie.name}</Text>
+            <Text style={s.detailStatusOuter} ><Text style={s.detailStatusLabel} >Status: </Text>{activeMovie.trading ? 'Trading' : 'Funding'}</Text>
+            <Paragraph style={s.description} >{activeMovie.shortDescription}</Paragraph>
+            <View style={s.buttonsOuter}>
+              <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<FontAwesome name="info-circle" size={25} />} />
+              <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<Ionicons name="md-stats" size={25} />} />
+              <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<MaterialIcons name="favorite" size={25} />} />
+            </View>
+            <IconButton buttonStyle={s.tradeButton} textStyle={s.tradeText} onPress={() => setActiveMovie(null)} icon={<FontAwesome name="dollar" size={25} style={s.tradeIcon}/>} >Trade</IconButton>
+          </>
+        )}
       </Modal>
     </Portal>
   )
 }))
+
+
+const IconButton = ({icon, buttonStyle, onPress, children, textStyle}) => {
+   
+  return (
+    <Button style={buttonStyle} onPress={onPress} >
+      {icon}{children && <Text style={textStyle}>{children}</Text>}
+    </Button>
+  )
+}
 
 
 const MovieCard = ({movie, onPress, outerStyle}) => {
@@ -142,10 +175,73 @@ const s = StyleSheet.create({
     top: 0,
     left: '10%',
     width: '80%',
-    height: '80%',
+    height: 425,
     backgroundColor: theme.colors.background,
-    borderRadius: 3,
+    borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#d6d7da'  }
+    borderColor: '#d6d7da',
+    //flex: 1,
+    flexDirection: 'column', 
+    justifyContent: 'flex-start', 
+    paddingLeft: 16,
+    paddingRight: 16,
+  },
+
+  detailTitle: {
+    color: '#eee',
+    paddingTop: 5,
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
+  detailStatusOuter: {
+    color: '#ddd',
+    textAlign: 'center',
+  },
+  detailStatusLabel: {
+    color: theme.colors.primary
+  },
+
+  description: {
+    marginTop: 12,
+    fontSize: 14,
+    lineHeight: 16,
+    color: '#ddd',
+  },
+  buttonsOuter : {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16
+  },
+  detailButton: {
+    //marginRight: 10,
+    //width: 40,
+    //height: 40,
+    //marginRight: 10,
+    borderColor: theme.colors.primary,
+    borderRadius: 20,
+    borderWidth: 1,
+    width: 70
+  },
+  icon: {
+    position: 'relative',
+    left: 15,
+    //marginRight: 5,
+    padding: 0
+  },
+  tradeButton: {
+    backgroundColor: theme.colors.primary,
+    color: '#eee',
+  },
+  tradeText: {
+    color: '#eee',
+    textTransform: 'none'
+  },
+  tradeIcon: {
+//    justifyContent:  'center',
+    color: '#eee',
+    marginRight: 4,
+    height: 15,
+  }
+
 })
 
