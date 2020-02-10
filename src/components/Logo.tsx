@@ -1,11 +1,33 @@
 import React from 'react'
-import { Image, StyleSheet } from 'react-native'
+import { 
+  Image, 
+  StyleSheet, 
+  ViewStyle 
+} from 'react-native'
 
-const img = require('../../assets/esx-logo.png')
+const img = {
+  source: require('../../assets/esx-logo.png'),
+  w: 220,
+  h: 127
+}
   
-export default (props) => (
-  <Image width="220" height="127" source={img} style={('style' in props) ? [s.image, props.style] : s.image}/>
-)
+interface Props {
+  width?: number,
+  height?: number,
+  style?: ViewStyle,
+}
+
+export default (props: Props) => {
+
+  const dim = {
+    width: ('width' in props) ? props.width : img.w,
+    height: ('height' in props) ? props.height : img.h
+  }
+
+  return (
+    <Image source={img.source} style={('style' in props) ? [s.image, props.style, dim] : [s.image, dim]}/>
+  )
+}
 
 const s = StyleSheet.create({
   image: {

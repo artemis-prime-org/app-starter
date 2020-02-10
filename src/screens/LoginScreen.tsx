@@ -10,7 +10,6 @@ import {
   Button, 
   TextInput, 
   TextLink, 
-  Logo
 } from '../components'
 
 import theme from '../style/theme'
@@ -37,7 +36,6 @@ export default ({ navigation }: NavProps) => {
 
   return (
     <KeyboardAvoidingView style={s.inner} behavior="position">
-      <Logo style={s.logo}/>
       <TextInput
         label="Email"
         returnKeyType="next"
