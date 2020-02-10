@@ -50,6 +50,7 @@ export default ({ navigation }: NavProps) => {
         autoCompleteType="email"
         textContentType="emailAddress"
         keyboardType="email-address"
+        //style={s.input}
       />
 
       <TextInput
@@ -60,10 +61,11 @@ export default ({ navigation }: NavProps) => {
         error={!!password.error}
         errorText={password.error}
         secureTextEntry
+        //style={s.input}
       />
       <View style={s.forgotPassword}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('ForgotPassword')}
+          onPress={() => navigation.navigate('ForgotPasswordScreen')}
         >
           <Text style={s.label}>Forgot your password?</Text>
         </TouchableOpacity>

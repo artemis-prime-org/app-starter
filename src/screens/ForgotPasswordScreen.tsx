@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
+
 import { 
   Text, 
   StyleSheet, 
-  TouchableOpacity 
-} from 'react-native'
+  TouchableOpacity,
+  KeyboardAvoidingView
+ } from 'react-native'
 
 import { 
-  Header, 
   Button, 
   TextInput, 
 } from '../components'
@@ -30,8 +31,7 @@ export default ({ navigation }: NavProps) => {
   };
 
   return (
-    <>
-      <Header>Restore Password</Header>
+    <KeyboardAvoidingView style={s.inner} behavior="position">
       <TextInput
         label="E-mail address"
         returnKeyType="done"
@@ -45,21 +45,27 @@ export default ({ navigation }: NavProps) => {
         keyboardType="email-address"
       />
 
-      <Button mode="contained" onPress={_onSendPressed} style={styles.button}>
+      <Button mode="contained" onPress={_onSendPressed} style={s.button}>
         Send Reset Instructions
       </Button>
 
       <TouchableOpacity
-        style={styles.back}
+        style={s.back}
         onPress={() => navigation.navigate('LoginScreen')}
       >
-        <Text style={styles.label}>← Back to login</Text>
+        <Text style={s.label}>← Back to login</Text>
       </TouchableOpacity>
-    </>
+    </KeyboardAvoidingView>
   );
 };
 
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
+  inner: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(4),
+  },
+
   back: {
     width: '100%',
     marginTop: 12,

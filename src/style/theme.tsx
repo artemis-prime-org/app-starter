@@ -4,8 +4,8 @@ export default {
   ...DarkTheme,
   colors: {
     ...DarkTheme.colors,
-    primary: "#fac54c",  // logo yellow,
-    secondary: "#0099ff",
+    primary: "#fac54c",   // logo yellow,
+    secondary: "#0099ff", // logo blue
     error: '#f13a59',
   },
   spacing: (n) => (32 * n),

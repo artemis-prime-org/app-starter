@@ -3,11 +3,11 @@ import {
   TouchableOpacity, 
   StyleSheet, 
   Text, 
-  View 
+  View,
+  KeyboardAvoidingView 
 } from 'react-native'
 
 import { 
-  Header, 
   Button, 
   TextInput, 
 } from '../components'
@@ -43,8 +43,7 @@ export default ({ navigation }: NavProps) => {
   }
 
   return (
-    <>
-      <Header>Create Account</Header>
+    <KeyboardAvoidingView style={s.inner} behavior="position">
       <TextInput
         label="Name"
         returnKeyType="next"
@@ -77,21 +76,27 @@ export default ({ navigation }: NavProps) => {
         secureTextEntry
       />
 
-      <Button mode="contained" onPress={_onSignUpPressed} style={styles.button}>
+      <Button mode="contained" onPress={_onSignUpPressed} style={s.button}>
         Sign Up
       </Button>
 
-      <View style={styles.row}>
-        <Text style={styles.label}>Already have an account? </Text>
+      <View style={s.row}>
+        <Text style={s.label}>Already have an account? </Text>
         <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-          <Text style={styles.link}>Login</Text>
+          <Text style={s.link}>Login</Text>
         </TouchableOpacity>
       </View>
-    </>
+    </KeyboardAvoidingView>
   )
 }
 
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
+
+  inner: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(4),
+  },
 
   label: {
     color: theme.colors.secondary,

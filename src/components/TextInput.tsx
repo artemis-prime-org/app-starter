@@ -7,22 +7,23 @@ import {
 import { TextInput as Input } from 'react-native-paper'
 import theme from '../style/theme'
 
-type Props = React.ComponentProps<typeof Input> & { errorText?: string }
+type Props = React.ComponentProps<typeof Input> & 
+  { errorText?: string, outerStyle?: string, inputStyle?: string }
 
 export default ({ errorText, ...props }: Props) => (
-  <View style={styles.container}>
+  <View style={('outerStyle' in props) ? [s.container, props.outerStyle] : s.container}>
     <Input
-      style={styles.input}
+      style={('inputStyle' in props) ? [s.input, props.inputStyle] : s.input}
       selectionColor={theme.colors.primary}
       underlineColor="transparent"
       mode="outlined"
       {...props}
     />
-    {errorText ? <Text style={styles.error}>{errorText}</Text> : null}
+    {errorText ? <Text style={s.error}>{errorText}</Text> : null}
   </View>
 )
 
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
 
   container: {
     width: '100%',
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
 
   input: {
     backgroundColor: theme.colors.surface,
+    //color: theme.colors.secondary // BUG  no way to set text color
   },
 
   error: {

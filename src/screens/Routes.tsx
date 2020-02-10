@@ -22,7 +22,8 @@ const Navigator = () => (
     headerMode='screen'
     screenOptions={{
       headerBackTitleVisible: false,
-      headerTransparent: true
+      headerTransparent: true,
+      headerTintColor: theme.colors.secondary
     }}
   >
     <Stack.Screen name="AuthScreen" component={AuthScreen} options={{ headerShown: false }} />
