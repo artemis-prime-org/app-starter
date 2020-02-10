@@ -3,13 +3,15 @@ import {
   TouchableOpacity, 
   StyleSheet, 
   Text, 
-  View 
+  View,
+  KeyboardAvoidingView,
 } from 'react-native'
 
 import { 
   Header, 
   Button, 
   TextInput, 
+  Logo
 } from '../components'
 
 import theme from '../style/theme'
@@ -35,8 +37,8 @@ export default ({ navigation }: NavProps) => {
   }
 
   return (
-    <>
-      <Header>Welcome back.</Header>
+    <KeyboardAvoidingView style={s.inner} behavior="position">
+      <Logo style={s.logo}/>
       <TextInput
         label="Email"
         returnKeyType="next"
@@ -59,31 +61,28 @@ export default ({ navigation }: NavProps) => {
         errorText={password.error}
         secureTextEntry
       />
-      {/*
-      <View style={styles.forgotPassword}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('ForgotPassword')}
-      >
-        <Text style={styles.label}>Forgot your password?</Text>
-      </TouchableOpacity>
+      <View style={s.forgotPassword}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ForgotPassword')}
+        >
+          <Text style={s.label}>Forgot your password?</Text>
+        </TouchableOpacity>
       </View>
-        */
-      }
       <Button mode="contained" onPress={_onLoginPressed}>
         Login
       </Button>
 
-      <View style={styles.row}>
-        <Text style={styles.label}>Don’t have an account? </Text>
+      <View style={s.row}>
+        <Text style={s.label}>Don’t have an account? </Text>
         <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
-          <Text style={styles.link}>Sign up</Text>
+          <Text style={s.link}>Sign up</Text>
         </TouchableOpacity>
       </View>
-    </>
+    </KeyboardAvoidingView>
   )
 }
 
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
   forgotPassword: {
     width: '100%',
     alignItems: 'flex-end',
@@ -92,6 +91,14 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     marginTop: 4,
+  },
+  inner: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(4),
+  },
+  logo: {
+    marginBottom: theme.spacing(1)
   },
   label: {
     color: theme.colors.secondary,
