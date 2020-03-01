@@ -14,7 +14,6 @@ import {
   Modal, 
   Portal,
   Button
-
 } from 'react-native-paper'
 
 import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
@@ -26,50 +25,7 @@ import { Paragraph } from '../components'
 import { NavProps } from '../types'
 import theme from '../style/theme'
 
-/*
-export default inject('store')(observer(({ navigation, store }: NavProps) => {
 
-  return (
-    <FlatList 
-      data={store.movieStore.movies}
-      renderItem={(movie) => (<MovieCard movie={movie}/>)}
-      keyExtractor={movie => movie.movieSlug}
-      numColumns={3}
-    />
-  )
-}))
-*/
-/*
-export default inject('store')(observer(({ navigation, store }: NavProps) => {
-
-  return (
-    <ScrollView contentContainerStyle={s.inner}>
-      {store.movieStore.movies.map((m, i) => <MovieCard movie={m} key={i} />)}
-    </ScrollView>
-  )
-}))
-*/
-/*
-export default inject('store')(observer(({ navigation, store }: NavProps) => {
-
-  return (
-    <FlatGrid
-      itemDimension={130}
-      items={store.movieStore.movies}
-      renderItem={(movie) => (<MovieCard movie={movie}/>)}
-      spacing={10}
-      style={s.gridView}
-    />
-  )
-}))
-*/
-/*
-      {store.movieStore.filteredMovies.map((m, i) => (
-        <MovieCard movie={m} key={i} />
-      ))}
-*/
-//          .map((m, i) => <MovieCard movie={m} key={i} />)}
- 
 export default inject('store')(observer(({ navigation, store }: NavProps) => {
 
   const [activeMovie, setActiveMovie] = useState(null)
@@ -106,6 +62,7 @@ export default inject('store')(observer(({ navigation, store }: NavProps) => {
             <Text style={s.detailStatusOuter} ><Text style={s.detailStatusLabel} >Status: </Text>{activeMovie.trading ? 'Trading' : 'Funding'}</Text>
             <Paragraph style={s.description} >{activeMovie.shortDescription}</Paragraph>
             <View style={s.buttonsOuter}>
+                {/* TODO / temp: For now, just close the modal when we press any of the buttons :) */}
               <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<FontAwesome name="info-circle" size={25} />} />
               <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<Ionicons name="md-stats" size={25} />} />
               <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<MaterialIcons name="favorite" size={25} />} />
@@ -130,8 +87,6 @@ const IconButton = ({icon, buttonStyle, onPress, children, textStyle}) => {
 
 
 const MovieCard = ({movie, onPress, outerStyle}) => {
-//  const heightStyle = (height) ? { height: height, width: 'auto' } : {}
-  //console.log(movie.posterImg)
 
   return (
     <TouchableOpacity onPress={onPress} style={outerStyle}>
@@ -242,3 +197,51 @@ const s = StyleSheet.create({
 
 })
 
+
+
+/*  PLEASE KEEP
+
+
+export default inject('store')(observer(({ navigation, store }: NavProps) => {
+
+  return (
+    <FlatList 
+      data={store.movieStore.movies}
+      renderItem={(movie) => (<MovieCard movie={movie}/>)}
+      keyExtractor={movie => movie.movieSlug}
+      numColumns={3}
+    />
+  )
+}))
+*/
+/*
+export default inject('store')(observer(({ navigation, store }: NavProps) => {
+
+  return (
+    <ScrollView contentContainerStyle={s.inner}>
+      {store.movieStore.movies.map((m, i) => <MovieCard movie={m} key={i} />)}
+    </ScrollView>
+  )
+}))
+*/
+/*
+export default inject('store')(observer(({ navigation, store }: NavProps) => {
+
+  return (
+    <FlatGrid
+      itemDimension={130}
+      items={store.movieStore.movies}
+      renderItem={(movie) => (<MovieCard movie={movie}/>)}
+      spacing={10}
+      style={s.gridView}
+    />
+  )
+}))
+*/
+/*
+      {store.movieStore.filteredMovies.map((m, i) => (
+        <MovieCard movie={m} key={i} />
+      ))}
+*/
+//          .map((m, i) => <MovieCard movie={m} key={i} />)}
+ 

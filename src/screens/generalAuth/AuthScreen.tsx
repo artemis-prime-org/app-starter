@@ -6,11 +6,11 @@ import {
   View
 } from 'react-native'
 
-import { Button, Logo } from '../components'
-import { NavProps } from '../types'
-import theme from '../style/theme'
+import { Button, Logo } from '../../components'
+import { NavProps } from '../../types'
+import theme from '../../style/theme'
 
-const bgImage = require('../../assets/collage.png')
+const bgImage = require('../../../assets/collage.png')
 
 export default ({ navigation }: NavProps) => (
   <ImageBackground
@@ -20,12 +20,8 @@ export default ({ navigation }: NavProps) => (
     <View style={s.inner} >
       <Logo width={100} height={100 * 127 / 220}/>
       <View>
-        <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
-          Login
-        </Button>
-        <Button mode="outlined" color={theme.colors.secondary} style={s.button} onPress={() => navigation.navigate('RegisterScreen')}>
-          Sign Up
-        </Button>
+        <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>Login</Button>
+        <Button mode="outlined" color={theme.colors.secondary} style={s.button} onPress={() => navigation.navigate('RegisterScreen')}>Sign Up</Button>
       </View>
     </View>
   </ImageBackground>

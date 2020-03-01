@@ -3,29 +3,37 @@ import {
   StyleSheet, 
   Text, 
   View,
-  KeyboardAvoidingView,
+  KeyboardAvoidingView 
 } from 'react-native'
 
 import { 
   Button, 
   TextInput, 
-  TextLink, 
-} from '../components'
+  TextLink
+} from '../../components'
 
-import theme from '../style/theme'
-import { emailValidator, passwordValidator } from '../util/validate'
-import { NavProps } from '../types'
+import theme from '../../style/theme'
+import { NavProps } from '../../types'
+import {
+  emailValidator,
+  passwordValidator,
+  nameValidator,
+} from '../../util/validate'
+
 
 export default ({ navigation }: NavProps) => {
 
+  const [name, setName] = useState({ value: '', error: '' })
   const [email, setEmail] = useState({ value: '', error: '' })
   const [password, setPassword] = useState({ value: '', error: '' })
 
-  const _onLoginPressed = () => {
+  const _onSignUpPressed = () => {
+    const nameError = nameValidator(name.value)
     const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value)
 
-    if (emailError || passwordError) {
+    if (emailError || passwordError || nameError) {
+      setName({ ...name, error: nameError })
       setEmail({ ...email, error: emailError })
       setPassword({ ...password, error: passwordError })
       return
@@ -36,6 +44,15 @@ export default ({ navigation }: NavProps) => {
 
   return (
     <KeyboardAvoidingView style={s.inner} behavior="position">
+      <TextInput
+        label="Name"
+        returnKeyType="next"
+        value={name.value}
+        onChangeText={text => setName({ value: text, error: '' })}
+        error={!!name.error}
+        errorText={name.error}
+      />
+
       <TextInput
         label="Email"
         returnKeyType="next"
@@ -58,43 +75,42 @@ export default ({ navigation }: NavProps) => {
         errorText={password.error}
         secureTextEntry
       />
-      <View style={s.forgotPassword}>
-        <TextLink onPress={() => navigation.navigate('ForgotPasswordScreen')} textStyle={s.label}>Forgot your password?</TextLink>
-      </View>
-      <Button mode="contained" onPress={_onLoginPressed}>Login</Button>
+
+      <Button mode="contained" onPress={_onSignUpPressed} style={s.button}>
+        Sign Up
+      </Button>
+
       <View style={s.row}>
-        <Text style={s.label}>Don’t have an account?</Text>
-        <TextLink onPress={() => navigation.navigate('RegisterScreen')} textStyle={s.link}>Sign up</TextLink>
+        <Text style={s.label}>Already have an account? </Text>
+        <TextLink onPress={() => navigation.navigate('LoginScreen')} textStyle={s.link} >Login</TextLink>
       </View>
     </KeyboardAvoidingView>
   )
 }
 
 const s = StyleSheet.create({
-  forgotPassword: {
-    width: '100%',
-    alignItems: 'flex-end',
-    marginBottom: 24,
-  },
-  row: {
-    flexDirection: 'row',
-    marginTop: 4,
-  },
+
   inner: {
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     paddingTop: theme.spacing(4),
   },
-  logo: {
-    marginBottom: theme.spacing(1)
-  },
+
   label: {
     color: theme.colors.secondary,
   },
+
+  button: {
+    marginTop: 24,
+  },
+
+  row: {
+    flexDirection: 'row',
+    marginTop: 4,
+  },
+  
   link: {
     fontWeight: 'bold',
     color: theme.colors.primary,
-    paddingLeft: 4
   },
 })
-

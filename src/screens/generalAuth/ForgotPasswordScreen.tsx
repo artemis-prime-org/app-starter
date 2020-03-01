@@ -9,11 +9,11 @@ import {
   Button, 
   TextInput, 
   TextLink, 
-} from '../components'
+} from '../../components'
 
-import theme from '../style/theme'
-import { emailValidator } from '../util/validate'
-import { NavProps } from '../types'
+import theme from '../../style/theme'
+import { emailValidator } from '../../util/validate'
+import { NavProps } from '../../types'
 
 export default ({ navigation }: NavProps) => {
   const [email, setEmail] = useState({ value: '', error: '' });
