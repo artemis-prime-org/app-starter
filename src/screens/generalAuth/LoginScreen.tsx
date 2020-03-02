@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { Component, useState } from 'react'
 import { 
   StyleSheet, 
   Text, 
   View,
   KeyboardAvoidingView,
+  TouchableOpacity,
 } from 'react-native'
+
 
 import { 
   Button, 
   TextInput, 
   TextLink, 
+  USPhoneNumberInput,
 } from '../../components'
 
 import theme from '../../style/theme'
@@ -36,6 +39,7 @@ export default ({ navigation }: NavProps) => {
 
   return (
     <KeyboardAvoidingView style={s.inner} behavior="position">
+      <USPhoneNumberInput />
       <TextInput
         label="Email"
         returnKeyType="next"

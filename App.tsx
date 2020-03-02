@@ -35,7 +35,6 @@ export default class App extends React.Component {
       // there exist two similar but different theming systems: react-navigation and react-native-paper.
       // This is a hack that passes one in to where the other is expected.  
 
-
     return ( 
       <MobxProvider store={stores}>
         <PaperProvider theme={theme}>
@@ -51,7 +50,7 @@ export default class App extends React.Component {
   async _cacheResourcesAsync() {
     let images = [
       require('./assets/collage.png'),
-      require('./assets/esx-splash.png')
+//      require('./assets/esx-splash.png')
     ]
     stores.movieStore.movies.map(movie => {
       images.push(movie.posterImg)
