@@ -10,7 +10,7 @@ export default ({ mode, style, children, ...props }: Props) => (
   <PaperButton
     style={[
       styles.button,
-      //mode === 'outlined' && { color: theme.colors.secondary },
+      //mode === 'outlined' && { color: theme.colors.accent },
       style,
     ]}
     labelStyle={styles.text}

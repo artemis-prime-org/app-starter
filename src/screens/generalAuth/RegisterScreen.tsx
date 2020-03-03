@@ -97,7 +97,7 @@ const s = StyleSheet.create({
   },
 
   label: {
-    color: theme.colors.secondary,
+    color: theme.colors.accent,
   },
 
   button: {

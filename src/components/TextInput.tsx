@@ -32,7 +32,7 @@ const s = StyleSheet.create({
 
   input: {
     backgroundColor: theme.colors.surface,
-    //color: theme.colors.secondary // BUG  no way to set text color
+    //color: theme.colors.accent // BUG  no way to set text color
   },
 
   error: {

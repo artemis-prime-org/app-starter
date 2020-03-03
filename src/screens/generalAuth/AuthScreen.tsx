@@ -21,7 +21,7 @@ export default ({ navigation }: NavProps) => (
       <Logo width={100} height={100 * 127 / 220}/>
       <View>
         <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>Login</Button>
-        <Button mode="outlined" color={theme.colors.secondary} style={s.button} onPress={() => navigation.navigate('RegisterScreen')}>Sign Up</Button>
+        <Button mode="outlined" color={theme.colors.accent} style={s.button} onPress={() => navigation.navigate('RegisterScreen')}>Sign Up</Button>
       </View>
     </View>
   </ImageBackground>
@@ -43,7 +43,8 @@ const s = StyleSheet.create({
   },
 
   button: {
-    borderColor: theme.colors.secondary
+    borderColor: theme.colors.accent,
+    borderWidth: 1
   }
 
 })

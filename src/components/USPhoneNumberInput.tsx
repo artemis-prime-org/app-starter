@@ -20,6 +20,8 @@ export default (props) => (
 
 const s = StyleSheet.create({
   container : {
-
+    backgroundColor: '#eee',
+    borderColor: '#e11',
+    borderWidth: 2, 
   }
 })

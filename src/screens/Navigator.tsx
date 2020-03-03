@@ -1,9 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import {
-  Navigator as AuthNavigator,
-} from './generalAuth'
+import Navigator from './generalAuth/Navigator'
 
 import Dashboard from './Dashboard'
 
@@ -14,7 +12,7 @@ export default () => (
     initialRouteName="Auth"
     headerMode='screen'
   >
-    <Stack.Screen name="Auth" component={AuthNavigator} options={{ headerShown: false }} />
+    <Stack.Screen name="Auth" component={Navigator} options={{ headerShown: false }} />
     <Stack.Screen name="Dashboard" component={Dashboard} />
   </Stack.Navigator>
 )

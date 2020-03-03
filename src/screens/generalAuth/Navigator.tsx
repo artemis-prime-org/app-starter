@@ -20,7 +20,7 @@ export default () => (
     screenOptions={{
       headerBackTitleVisible: false,
       headerTransparent: true,
-      headerTintColor: theme.colors.secondary
+      headerTintColor: theme.colors.accent
     }}
   >
     <Stack.Screen name="AuthScreen" component={AuthScreen} options={{ headerShown: false }} />

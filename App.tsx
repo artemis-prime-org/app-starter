@@ -9,7 +9,7 @@ import { Provider as PaperProvider } from 'react-native-paper'
 
 import Navigator from './src/screens/Navigator'
 import stores from './src/stores'
-import theme from './src/style/theme'
+import theme, { reactNavigationTheme } from './src/style/theme'
 
 import { NavigationContainer } from '@react-navigation/native'
 
@@ -21,6 +21,8 @@ export default class App extends React.Component {
   }
 
   render() {
+    
+    
     if (!this.state.isReady) {
       return (
         <AppLoading
@@ -33,13 +35,15 @@ export default class App extends React.Component {
 
       // :aa TODO ... this is a hack to pass the Paper theme in, but it sets a few good defaults... we should create a proper translation layer
       // there exist two similar but different theming systems: react-navigation and react-native-paper.
-      // This is a hack that passes one in to where the other is expected.  
+      // This is a hack that passes one in to where the other is expected. 
+      //    <NavigationContainer theme={theme}>
+      //  
 
     return ( 
       <MobxProvider store={stores}>
         <PaperProvider theme={theme}>
-          <StatusBar translucent='true' barStyle="light-content" />
-          <NavigationContainer theme={theme}>
+          <StatusBar translucent barStyle='light-content' />
+          <NavigationContainer theme={reactNavigationTheme}>
             <Navigator />
           </NavigationContainer>
         </PaperProvider>
@@ -48,9 +52,9 @@ export default class App extends React.Component {
   }
 
   async _cacheResourcesAsync() {
+    
     let images = [
       require('./assets/collage.png'),
-//      require('./assets/esx-splash.png')
     ]
     stores.movieStore.movies.map(movie => {
       images.push(movie.posterImg)
@@ -58,6 +62,7 @@ export default class App extends React.Component {
     
     const imagesCached = cacheImages(images)
     await Promise.all(imagesCached)
+    
   }
 }
 

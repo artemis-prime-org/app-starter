@@ -93,7 +93,7 @@ const s = StyleSheet.create({
     marginBottom: theme.spacing(1)
   },
   label: {
-    color: theme.colors.secondary,
+    color: theme.colors.accent,
   },
   link: {
     fontWeight: 'bold',

@@ -1,15 +1,37 @@
 import { DarkTheme } from 'react-native-paper'
 
-export default {
+
+const logoYellow = "#ff9e3e"
+const logoBlue = "#0099ff"
+const errorRed = '#f13a59'
+
+  // This is the theme format for react-native-paper
+  // we're adding a function that creates a theme format for react-navigation
+const rnpTheme = {
   ...DarkTheme,
   colors: {
     ...DarkTheme.colors,
-//    primary: "#fac54c",   // imdb yellow,
-    primary: "#ff9e3e",   // logo yellow,
-    secondary: "#0099ff", // logo blue
-    error: '#f13a59',
-    //secondary: "#5fb8ff", // desaturaed logo blue per Material recommendations for dark mode,
+    primary: logoYellow,  
+    accent: logoBlue, 
+
+      // extensions
+    error: errorRed,
+    border: logoYellow,
   },
+    // extensions
   spacing: (n: number) => (32 * n),
 }
+
+export const reactNavigationTheme = {
+  dark: true,
+  colors: {
+    primary: rnpTheme.colors.primary,
+    background: rnpTheme.colors.background,
+    card: rnpTheme.colors.surface,
+    text: rnpTheme.colors.text,
+    border: rnpTheme.colors.border
+  }
+}
+
+export default rnpTheme
 
