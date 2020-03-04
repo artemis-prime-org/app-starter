@@ -7,8 +7,8 @@ import {
 } from 'react-native'
 
 import { 
-  Button, 
-  TextInput, 
+  ButtonPlus, 
+  TextInputPlus, 
   TextLink
 } from '../../components'
 
@@ -44,7 +44,7 @@ export default ({ navigation }: NavProps) => {
 
   return (
     <KeyboardAvoidingView style={s.inner} behavior="position">
-      <TextInput
+      <TextInputPlus
         label="Name"
         returnKeyType="next"
         value={name.value}
@@ -53,7 +53,7 @@ export default ({ navigation }: NavProps) => {
         errorText={name.error}
       />
 
-      <TextInput
+      <TextInputPlus
         label="Email"
         returnKeyType="next"
         value={email.value}
@@ -66,7 +66,7 @@ export default ({ navigation }: NavProps) => {
         keyboardType="email-address"
       />
 
-      <TextInput
+      <TextInputPlus
         label="Password"
         returnKeyType="done"
         value={password.value}
@@ -76,9 +76,9 @@ export default ({ navigation }: NavProps) => {
         secureTextEntry
       />
 
-      <Button mode="contained" onPress={_onSignUpPressed} style={s.button}>
+      <ButtonPlus mode="contained" onPress={_onSignUpPressed} style={s.button}>
         Sign Up
-      </Button>
+      </ButtonPlus>
 
       <View style={s.row}>
         <Text style={s.label}>Already have an account? </Text>

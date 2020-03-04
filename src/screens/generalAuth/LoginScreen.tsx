@@ -1,16 +1,15 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { 
   StyleSheet, 
   Text, 
   View,
   KeyboardAvoidingView,
-  TouchableOpacity,
 } from 'react-native'
 
 
 import { 
-  Button, 
-  TextInput, 
+  ButtonPlus, 
+  TextInputPlus, 
   TextLink, 
   USPhoneNumberInput,
 } from '../../components'
@@ -25,22 +24,28 @@ export default ({ navigation }: NavProps) => {
   const [password, setPassword] = useState({ value: '', error: '' })
 
   const _onLoginPressed = () => {
+    
+    /*
     const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value)
 
+    
     if (emailError || passwordError) {
       setEmail({ ...email, error: emailError })
       setPassword({ ...password, error: passwordError })
       return
     }
+    */
 
     navigation.navigate('Dashboard')
   }
 
   return (
     <KeyboardAvoidingView style={s.inner} behavior="position">
-      <USPhoneNumberInput />
-      <TextInput
+      <USPhoneNumberInput 
+        label="Phone Number"
+      />
+      <TextInputPlus
         label="Email"
         returnKeyType="next"
         value={email.value}
@@ -53,7 +58,7 @@ export default ({ navigation }: NavProps) => {
         keyboardType="email-address"
       />
 
-      <TextInput
+      <TextInputPlus
         label="Password"
         returnKeyType="done"
         value={password.value}
@@ -65,7 +70,7 @@ export default ({ navigation }: NavProps) => {
       <View style={s.forgotPassword}>
         <TextLink onPress={() => navigation.navigate('ForgotPasswordScreen')} textStyle={s.label}>Forgot your password?</TextLink>
       </View>
-      <Button mode="contained" onPress={_onLoginPressed}>Login</Button>
+      <ButtonPlus mode="contained" onPress={_onLoginPressed}>Login</ButtonPlus>
       <View style={s.row}>
         <Text style={s.label}>Don’t have an account?</Text>
         <TextLink onPress={() => navigation.navigate('RegisterScreen')} textStyle={s.link}>Sign up</TextLink>

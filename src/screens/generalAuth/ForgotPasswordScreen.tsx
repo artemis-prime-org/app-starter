@@ -6,8 +6,8 @@ import {
  } from 'react-native'
 
 import { 
-  Button, 
-  TextInput, 
+  ButtonPlus, 
+  TextInputPlus, 
   TextLink, 
 } from '../../components'
 
@@ -31,7 +31,7 @@ export default ({ navigation }: NavProps) => {
 
   return (
     <KeyboardAvoidingView style={s.inner} behavior="position">
-      <TextInput
+      <TextInputPlus
         label="E-mail address"
         returnKeyType="done"
         value={email.value}
@@ -43,7 +43,7 @@ export default ({ navigation }: NavProps) => {
         textContentType="emailAddress"
         keyboardType="email-address"
       />
-      <Button mode="contained" onPress={_onSendPressed} style={s.button}>Send Reset Instructions</Button>
+      <ButtonPlus mode="contained" onPress={_onSendPressed} style={s.button}>Send Reset Instructions</ButtonPlus>
       <TextLink onPress={() => navigation.navigate('LoginScreen')} textStyle={s.label} outerStyle={s.back}>← Back to login</TextLink>
     </KeyboardAvoidingView>
   );

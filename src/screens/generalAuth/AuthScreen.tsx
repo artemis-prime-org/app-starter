@@ -2,11 +2,10 @@ import React from 'react'
 import {
   ImageBackground,
   StyleSheet,
-  Text,
   View
 } from 'react-native'
 
-import { Button, Logo } from '../../components'
+import { ButtonPlus, Logo } from '../../components'
 import { NavProps } from '../../types'
 import theme from '../../style/theme'
 
@@ -20,8 +19,8 @@ export default ({ navigation }: NavProps) => (
     <View style={s.inner} >
       <Logo width={100} height={100 * 127 / 220}/>
       <View>
-        <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>Login</Button>
-        <Button mode="outlined" color={theme.colors.accent} style={s.button} onPress={() => navigation.navigate('RegisterScreen')}>Sign Up</Button>
+        <ButtonPlus mode="contained" onPress={() => navigation.navigate('LoginScreen')}>Login</ButtonPlus>
+        <ButtonPlus mode="outlined" color={theme.colors.accent} style={s.button} onPress={() => navigation.navigate('RegisterScreen')}>Sign Up</ButtonPlus>
       </View>
     </View>
   </ImageBackground>
